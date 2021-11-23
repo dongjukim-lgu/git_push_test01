@@ -1,0 +1,23 @@
+name: CI/CD workflow 테스트
+on:
+  push:
+    branches: [ dev ]
+
+env:
+  COLOR: "test"
+jobs:
+  deploy_to_dev:
+    name: DEV 배포
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: 'https://github.com/protodevteam/study-service-api'
+          ref: 'dev'
+          token: ${{ github.token }}
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        run: |
+          gradle build
