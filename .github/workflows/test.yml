@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          repository: 'https://github.com/protodevteam/study-service-api'
+          repository: 'protodevteam/study-service-api'
           ref: 'dev'
           token: ${{ github.token }}
 
